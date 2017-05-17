@@ -1,4 +1,5 @@
 import os
+import re
 
 def rename_files():
     # 1) get file names
@@ -10,7 +11,7 @@ def rename_files():
     
     # 2) for each file, rename
     for file_name in file_list:
-        new_name = file_name.translate(None, "0123456789")
+        new_name = re.sub("\d", "", file_name)
         print("Old Name: "+file_name)
         print("New Name: "+new_name)
         os.rename(file_name, new_name)
